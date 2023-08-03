@@ -1,18 +1,6 @@
-
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main> -->
   <div>
-    <Navbar :idMenu="idMenu" :key="idMenu"></Navbar>
+    <Navbar v-if="idMenu != 0" :idMenu="idMenu" :key="idMenu"></Navbar>
     <router-view @id-menu="setMenu($event)"/>
   </div>
 </template>
@@ -26,7 +14,7 @@ export default {
     Navbar
   },
   setup() {
-    const idMenu = ref(1);
+    const idMenu = ref(-1);
 
     function setMenu(id) {
       idMenu.value = id;
@@ -39,6 +27,7 @@ export default {
   }
 }
 </script>
+
 <!-- 
 <style scoped>
 header {
